@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div>
+    <div id="center-box">
+        <p id="demo"></p>
+    </div>
+
+    <div id="center-box2">
+        <p class="demo2"></p>
+    </div>
+
+    <div id="b"></div>
+
+    <div id="a"></div>
+</div>
+<script>
+    let alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+    // let namee = [
+    //     'arshia',
+    //     'ali',
+    //     'amir'
+    // ];
+
+    // const name = Math.floor(Math.random() * namee.length);
+
+    let name = 'arshia'.toUpperCase();
+
+    for (let i = 0; i < name.length; i++) {
+        const text = document.createElement('p');
+        let div1 = document.getElementById('a');
+
+        text.textContent = "_";
+        text.classList.add('name2');
+        div1.appendChild(text);
+    }
+    alphabets.forEach(function (alphabet) {
+        let btn = document.createElement('button');
+        const div2 = document.getElementById('b');
+
+        btn.classList.add('btn-class');
+        btn.textContent = alphabet;
+
+        btn.addEventListener('click', function () {
+            let peyda_shod = false;
+
+            let all_p = document.getElementById('a').getElementsByTagName('p');
+
+            for (let i = 0; i < name.length; i++) {
+                if (name[i] === alphabet) {
+                    all_p[i].textContent = alphabet;
+                    peyda_shod = true;
+                }
+            }
+            if (peyda_shod) {
+                btn.classList.add('active');
+                btn.disabled = true;
+            } else {
+                btn.disabled = true;
+                // btn.classList.add('active2');
+            }
+        });
+        div2.appendChild(btn);
+    });
+</script>
+</body>
+</html>
