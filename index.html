@@ -85,63 +85,124 @@
     let alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
         'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-    let names = [
-        'arshia',
-        'ali',
-        'amir'];
+    // let names = [
+    //     'arshia',
+    //     'ali',
+    //     'amir'];
 
-    const random = Math.floor(Math.random() * names.length);
-    let name = names[random].toUpperCase()
+    // const random = Math.floor(Math.random() * names.length);
+    // let name = names[random].toUpperCase()
 
-    for (let i = 0; i < name.length; i++) {
-        const text = document.createElement('p');
-        let div1 = document.getElementById('guess');
+    // for (let i = 0; i < name.length; i++) {
+    //     const text = document.createElement('p');
+    //     let div1 = document.getElementById('guess');
 
-        text.textContent = "_";
-        text.classList.add('guess');
-        div1.appendChild(text);
-    }
+    //     text.textContent = "_";
+    //     text.classList.add('guess');
+    //     div1.appendChild(text);
+    // }
 
-    alphabets.forEach(function (alphabet) {
-        let btn = document.createElement('button');
-        const div2 = document.getElementById('words');
+    // alphabets.forEach(function (alphabet) {
+    //     let btn = document.createElement('button');
+    //     const div2 = document.getElementById('words');
 
-        btn.classList.add('btn-class');
-        btn.textContent = alphabet;
+    //     btn.classList.add('btn-class');
+    //     btn.textContent = alphabet;
 
-        btn.addEventListener('click', function () {
-            btn.disabled = true;
+    //     btn.addEventListener('click', function () {
+    //         btn.disabled = true;
 
-            let all_p = document.getElementById('guess').getElementsByTagName('p');
+    //         let all_p = document.getElementById('guess').getElementsByTagName('p');
 
-            for (let i = 0; i < name.length; i++) {
-                if (name[i] === alphabet) {
-                    all_p[i].textContent = alphabet;
-                }
-            }
+    //         for (let i = 0; i < name.length; i++) {
+    //             if (name[i] === alphabet) {
+    //                 all_p[i].textContent = alphabet;
+    //             }
+    //         }
 
-            if (name.includes(alphabet)) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.add('active2');
-            }
+    //         if (name.includes(alphabet)) {
+    //             btn.classList.add('active');
+    //         } else {
+    //             btn.classList.add('active2');
+    //         }
 
-        });
+    //     });
 
-        div2.appendChild(btn);
-    });
+    //     div2.appendChild(btn);
+    // });
 
-    let clickCount = 0;
-    const Button = document.getElementById("words");
+    // let clickCount = 0;
+    // const Button = document.getElementById("words");
 
-    Button.addEventListener("click", () => {
-        clickCount++;
+    // Button.addEventListener("click", () => {
+    //     clickCount++;
 
-        if (clickCount >= 2) {
-            document.getElementById('lose').innerHTML = 'game over';
+    //     if (clickCount >= 2) {
+    //         document.getElementById('lose').innerHTML = 'game over';
+    //     }
+
+    // });
+
+
+
+
+            let alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+        let names = [
+            'arshia',
+            'ali',
+            'amir'
+        ];
+
+        const random = Math.floor(Math.random() * names.length);
+        let name = names[random].toUpperCase();
+
+        for (let i = 0; i < name.length; i++) {
+            const text = document.createElement('p');
+            let div1 = document.getElementById('guess');
+
+            text.textContent = "_";
+            text.classList.add('guess');
+            div1.appendChild(text);
         }
 
-    });
+        let clickCount = 0; 
+
+        alphabets.forEach(function (alphabet) {
+            let btn = document.createElement('button');
+            const div2 = document.getElementById('words');
+
+            btn.classList.add('btn-class');
+            btn.textContent = alphabet;
+
+            btn.addEventListener('click', function () {
+                btn.disabled = true;
+
+                let all_p = document.getElementById('guess').getElementsByTagName('p');
+
+                for (let i = 0; i < name.length; i++) {
+                    if (name[i] === alphabet) {
+                        all_p[i].textContent = alphabet;
+                    }
+                }
+
+                if (name.includes(alphabet)) {
+                    btn.classList.add('active');
+
+                } else {
+                    btn.classList.add('active2');
+                    clickCount++;
+                    if (clickCount >= 10) { 
+
+                        document.getElementById('lose').innerHTML = 'game over';
+                        document.getElementById('words').innerHTML = document.getElementById('words').innerHTML;
+                    }
+                }
+            });
+
+            div2.appendChild(btn);
+        });
     
 </script>
 </body>
