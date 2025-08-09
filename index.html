@@ -6,7 +6,7 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<div>
+<!-- <div>
     <div id="center-box">
         <p id="demo"></p>
     </div>
@@ -18,57 +18,131 @@
     <div id="b"></div>
 
     <div id="a"></div>
+</div> -->
+
+
+
+<div>
+    <div id="words"></div>
+
+    <div id="guess"></div>
 </div>
+
+<h1 id="lose"></h1>
 <script>
+    // let alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    //     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+    // // let namee = [
+    // //     'arshia',
+    // //     'ali',
+    // //     'amir'
+    // // ];
+
+    // // const name = Math.floor(Math.random() * namee.length);
+
+    // let name = 'arshia'.toUpperCase();
+
+    // for (let i = 0; i < name.length; i++) {
+    //     const text = document.createElement('p');
+    //     let div1 = document.getElementById('a');
+
+    //     text.textContent = "_";
+    //     text.classList.add('name2');
+    //     div1.appendChild(text);
+    // }
+    // alphabets.forEach(function (alphabet) {
+    //     let btn = document.createElement('button');
+    //     const div2 = document.getElementById('b');
+
+    //     btn.classList.add('btn-class');
+    //     btn.textContent = alphabet;
+
+    //     btn.addEventListener('click', function () {
+    //         let peyda_shod = false;
+
+    //         let all_p = document.getElementById('a').getElementsByTagName('p');
+
+    //         for (let i = 0; i < name.length; i++) {
+    //             if (name[i] === alphabet) {
+    //                 all_p[i].textContent = alphabet;
+    //                 peyda_shod = true;
+    //             }
+    //         }
+    //         if (peyda_shod) {
+    //             btn.classList.add('active');
+    //             btn.disabled = true;
+    //         } else {
+    //             btn.disabled = true;
+    //             // btn.classList.add('active2');
+    //         }
+    //     });
+    //     div2.appendChild(btn);
+    // });
+
+
+
     let alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
         'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-    // let namee = [
-    //     'arshia',
-    //     'ali',
-    //     'amir'
-    // ];
+    let names = [
+        'arshia',
+        'ali',
+        'amir'];
 
-    // const name = Math.floor(Math.random() * namee.length);
-
-    let name = 'arshia'.toUpperCase();
+    const random = Math.floor(Math.random() * names.length);
+    let name = names[random].toUpperCase()
 
     for (let i = 0; i < name.length; i++) {
         const text = document.createElement('p');
-        let div1 = document.getElementById('a');
+        let div1 = document.getElementById('guess');
 
         text.textContent = "_";
-        text.classList.add('name2');
+        text.classList.add('guess');
         div1.appendChild(text);
     }
+
     alphabets.forEach(function (alphabet) {
         let btn = document.createElement('button');
-        const div2 = document.getElementById('b');
+        const div2 = document.getElementById('words');
 
         btn.classList.add('btn-class');
         btn.textContent = alphabet;
 
         btn.addEventListener('click', function () {
-            let peyda_shod = false;
+            btn.disabled = true;
 
-            let all_p = document.getElementById('a').getElementsByTagName('p');
+            let all_p = document.getElementById('guess').getElementsByTagName('p');
 
             for (let i = 0; i < name.length; i++) {
                 if (name[i] === alphabet) {
                     all_p[i].textContent = alphabet;
-                    peyda_shod = true;
                 }
             }
-            if (peyda_shod) {
+
+            if (name.includes(alphabet)) {
                 btn.classList.add('active');
-                btn.disabled = true;
             } else {
-                btn.disabled = true;
-                // btn.classList.add('active2');
+                btn.classList.add('active2');
             }
+
         });
+
         div2.appendChild(btn);
     });
+
+    let clickCount = 0;
+    const Button = document.getElementById("words");
+
+    Button.addEventListener("click", () => {
+        clickCount++;
+
+        if (clickCount >= 2) {
+            document.getElementById('lose').innerHTML = 'game over';
+        }
+
+    });
+    
 </script>
 </body>
 </html>
